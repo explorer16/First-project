@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-class registrationController
+class registrationController extends Controller
 {
-
+    public function show():void
+    {
+        echo 'Here we are registrant something';
+    }
 }

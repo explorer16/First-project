@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/users', function () {
-    return 'Hello World';
+Route::get('/main', [\App\Http\Controllers\mainPageController::class, 'show']);
+
+Route::prefix('/user')->group(function (){
+    Route::post('/registration',[\App\Http\Controllers\registrationController::class,'show']);
+    Route::post('/authentication',[\App\Http\Controllers\authenticationController::class,'show']);
+    Route::delete('/delete',[\App\Http\Controllers\deleteController::class,'show']);
+    Route::get('/show',[\App\Http\Controllers\showController::class,'show']);
 });
+
+Route::get('/tasks',[\App\Http\Controllers\taskController::class]);
