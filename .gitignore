@@ -2,6 +2,10 @@
 /public/build
 /public/hot
 /public/storage
+/public/book-components/cover/
+!/public/book-components/cover/default
+/public/book-components/files/
+!/public/book-components/files/default
 /storage/*.key
 /vendor
 .env
