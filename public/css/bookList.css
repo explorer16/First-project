@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.books{
+    position: absolute;
+    top:0;
+    left: 280px;
+    width: 1060px;
+    height: 590px;
+    background-color: #e4dcb4;
+    border-radius: 10px;
+    border-style: double;
+    border-color: black;
+    border-width: 6px;
+}
+.book{
+    position:relative;
+    display: inline-block;
+    border: 5px;
+    width: 470px;
+    height: 220px;
+    margin-top: 30px;
+    margin-left: 30px;
+    background-color: #dbad6a;
+    border-radius: 10px;
+}
+.conteyner_img{
+    position: absolute;
+    height: 100%;
+    width: 33%;
+    border-width: 50px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.book-img{
+    position: absolute;
+    top:3%;
+    left:5%;
+    width: 90%;
+    height: 90%;
+
+}
+.book-name{
+    position:absolute;
+    left: 33%;
+    color: black;
+    font-family: 'Montserrat';
+    font-size: 20px;
+
+}
+.autor{
+    position: absolute;
+    top: 45px;
+    left: 33%;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+}
+.janr{
+    position: absolute;
+    top: 70px;
+    left: 33%;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+}
+.download-button{
+    position:absolute;
+    bottom:0;
+    right:0;
+    color: rgb(0, 0, 0);
+    background-color: #cfd8dc;
+    border-bottom-right-radius: 10px;
+}
+.book_retell_button{
+    position:absolute;
+    color: rgb(0, 0, 1);
+    background-color: #cfd8dc;
+    bottom: 0;
+    right: 42px;
+    width: 58%;
+    height: 39px;
+    font-size: larger;
+    font-family:New Century Schoolbook, TeX Gyre Schola, serif;
+}
+.download-image{
+    width: 30px;
+    height: 30px;
+    border: 0;
+}
+.page-button-form{
+    position:absolute;
+    background-color: transparent;
+    width: 60%;
+    height: 8%;
+    left: 20%;
+    bottom: 0;
+    border-radius: 10px;
+}
+.prev{
+    position: relative;
+    height: 100%;
+    width: 20%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-left: -4px;
+    background-color: #cfd8dc;
+}
+.last{
+    position: relative;
+    height: 100%;
+    width: 20%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: -4px;
+    background-color: #cfd8dc;
+}
+.page-button{
+    position: relative;
+    height: 100%;
+    align-self: center;
+    background-color: #a0c1c9;
+    border-radius: 10px;
+    margin-left: -4px;
+}
