@@ -2,11 +2,8 @@
 
 use App\Http\Controllers\authenticationController;
 use App\Http\Controllers\bookController;
-use App\Http\Controllers\bookRetellingController;
 use App\Http\Controllers\deleteController;
-use App\Http\Controllers\mainPageController;
 use App\Http\Controllers\registrationController;
-use App\Http\Controllers\showController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function(){
-    return view('book_list');
+    return redirect('/book/list/1');
 });
 Route::get('/main', [mainPageController::class, 'show']);
 
@@ -33,7 +30,7 @@ Route::prefix('/user')->group(function (){
 });
 
 Route::prefix('/book')->group(function (){
-    Route::get('/list/{page?}', [bookController::class, 'getList'])->name('book.list');
+    Route::match(['get','post'],'/list/{page?}', [bookController::class, 'getList'])->name('book.list')->middleware('setting.parameters');
     Route::get('/retell/{page}', [bookController::class, 'getBookInfo'])->name('retell');
     Route::get('/created', [bookController::class, 'create'])->name('create');
     Route::get('/updated', [bookController::class, 'update'])->name('update');

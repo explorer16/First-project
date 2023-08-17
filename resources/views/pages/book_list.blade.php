@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Cache-Control" content="private">
     <link type = "text/css" rel = "stylesheet" href = "{{ asset('css/bookList.css') }}">
     <title>F-store</title>
@@ -26,21 +26,7 @@
                 <button class="book_retell_button" onclick="window.location.href = '{{ route('retell', ['page' => $book->id]) }}';">Описание</button>
             </div>
         @endforeach
-        {{--<form class="page-button-form">
-            <?php
-            if($countPages<=5&&$countPages!=1):
-            for($i=1;$i<=$countPages;$i++):?>
-            <input type="submit" class="page-button" name="page" value="<?=$i?>" style="width:<?=100/$countPages?>%" >
-            <?php endfor;
-            elseif ($countPages>5):?>
-            <input type="submit" class="prev" name="page" value="First">
-            <?php $middleId=\UserClasess\calculateMiddleButton::calculate($currentPage,$countPages);
-            for($i=$middleId-2;$i<=$middleId+2;$i++):?>
-            <input type="submit" class="page-button" name="page" value="<?=$i?>" style="width:12%" >
-            <?php endfor;?>
-            <input type="submit" class="last" name="page" value="Last">
-            <?php endif; ?>
-        </form>--}}
+        @include('layouts.pagination')
     </div>
     @include('layouts.footer')
 </article>

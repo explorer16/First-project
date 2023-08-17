@@ -4,8 +4,8 @@
     position: absolute;
     top:0;
     left: 280px;
-    width: 1060px;
-    height: 590px;
+    width: 78.7%;
+    height: 77%;
     background-color: #e4dcb4;
     border-radius: 10px;
     border-style: double;
@@ -16,7 +16,7 @@
     position:relative;
     display: inline-block;
     border: 5px;
-    width: 470px;
+    width: 45%;
     height: 220px;
     margin-top: 30px;
     margin-left: 30px;

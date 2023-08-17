@@ -25,7 +25,7 @@
         <div class="retelling-pos">
             <p class="retelling-text">{{ $book->brief_retelling }}</p>
         </div>
-        <button class="return-button" onclick="window.location.href='{{ route('book.list', ['page'=>@$_SESSION['page_id']]) }}';">Вернуться к списку книг</button>
+        <button class="return-button" onclick="window.location.href='{{ route('book.list', ['page'=>$book->bookListId]) }}';">Вернуться к списку книг</button>
     </div>
     @include('layouts.footer')
     </article>
