@@ -16,26 +16,19 @@ class setParams
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['title']) && !empty($_POST['title'])) {
-                $params = 'books.title LIKE %' . $_POST['title'] . '%';
-            } elseif (isset($_POST['filters'])) {
-                // TODO: Handle filters for the week
+        if ($request->isMethod('post')) {
+            if ($request->has('title')) {
+                $params = 'books.title LIKE %' . $request->input('title') . '%';
+            } elseif ($request->has('filters')) {
+                // TODO: Handle filters
             }
-        } elseif (isset($_GET['page'])) {
-            // Assuming that $next is a valid callback or function reference
-            return $next($request);
-        } else {
+        } elseif ($request->isMethod('get')&&!$request->has('page')) {
             $params = 'books.id != 0';
         }
 
-// Make sure to escape the parameter before setting it in the cookie to prevent potential security issues.
         if (isset($params)) {
-            $escapedParams = base64_encode($params);
-            setcookie('parameters', $escapedParams, 0, '/book');
+            $request->session()->put('search_params', $params);
         }
-
-// Assuming that $next is a valid callback or function reference
         return $next($request);
     }
 }

@@ -7,14 +7,16 @@ class bookController extends Controller
 {
     public function getList($page=1)
     {
-        setcookie('page',$page, 0, '/book');
-        $params = base64_decode($_COOKIE['parameters']);
-        $params = [explode(' ', $params)];
+        $page = (int) $page;
+        session(['page' => $page]);
+
+        $params = session('search_params');
+        $paramsArray[] = explode(' ', $params);
 
         $baseQuery = DB::table('books')
             ->join('bookgenres', 'books.id', '=', 'bookgenres.book_id')
             ->join('genres', 'genres.id', '=', 'bookgenres.genre_id')
-            ->where($params);
+            ->where($paramsArray);
 
         $bookQuery = clone $baseQuery;
         $books = $bookQuery->select('books.title',
