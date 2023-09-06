@@ -7,11 +7,12 @@ class bookController extends Controller
 {
     public function getList($page=1)
     {
-        $page = (int) $page;
-        session(['page' => $page]);
+        $page = session('page', $page);
 
         $params = session('search_params');
         $paramsArray[] = explode(' ', $params);
+
+        $paramsOrderBy = session('orderBy');
 
         $baseQuery = DB::table('books')
             ->join('bookgenres', 'books.id', '=', 'bookgenres.book_id')
@@ -27,6 +28,7 @@ class bookController extends Controller
                 DB::raw('group_concat(genres.name) as genres')
             )
             ->groupBy('books.id')
+            ->orderBy('books.id', $paramsOrderBy)
             ->skip($page*4-4)
             ->limit(4)
             ->get();

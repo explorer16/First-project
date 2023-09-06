@@ -13,6 +13,7 @@
 <body>
 @include('layouts.header')
 <article>
+    @include('layouts.filter')
     <div class="books">
         @foreach($books as $book)
             <div class="book">

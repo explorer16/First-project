@@ -16,18 +16,31 @@ class setParams
      */
     public function handle(Request $request, Closure $next)
     {
+        $params = [
+            'where' => null,
+            'orderBy' => 'asc',
+        ];
         if ($request->isMethod('post')) {
             if ($request->has('title')) {
-                $params = 'books.title LIKE %' . $request->input('title') . '%';
-            } elseif ($request->has('filters')) {
-                // TODO: Handle filters
+                $params['where'] = 'books.title LIKE %' . $request->input('title') . '%';
+            } elseif ($request->has('genre')) {
+                $params['where'] = 'genres.name = '. $request->input('genre');
+                if ($params['where'] == 'genres.name = all')  {
+                    $params['where'] = 'books.id != 0';
+                }
+                $params['orderBy'] = $request->input('orderBy');
             }
         } elseif ($request->isMethod('get')&&!$request->has('page')) {
-            $params = 'books.id != 0';
+            $params['where'] = 'books.id != 0';
+        } elseif ($request->isMethod('get')&&$request->has('page')) {
+            $page = $request->input('page');
+            $request->session()->put('page', $page);
         }
 
-        if (isset($params)) {
-            $request->session()->put('search_params', $params);
+        if (isset($params['where'])) {
+            $request->session()->put('search_params', $params['where']);
+            $request->session()->put('orderBy', $params['orderBy']);
+            $request->session()->put('page', 1);
         }
         return $next($request);
     }
