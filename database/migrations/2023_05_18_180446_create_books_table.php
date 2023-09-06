@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('brief_retelling');
             $table->string('image_path', 50)->nullable();
             $table->string('file_path', 50);
+            $table->integer('rating')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
